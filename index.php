@@ -1,2 +1,4 @@
 <?php
-echo 'salut';
+
+
+include 'partieben/dashboard.php';
