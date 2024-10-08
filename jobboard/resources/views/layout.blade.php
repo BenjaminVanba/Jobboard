@@ -22,7 +22,7 @@
         <!-- Footer content -->
     </footer>
 
-    @vite('resources/js/app.js') <!-- Si tu as aussi un fichier JS à inclure -->
+    @vite('resources/js/app.js') 
 </body>
 
 </html>

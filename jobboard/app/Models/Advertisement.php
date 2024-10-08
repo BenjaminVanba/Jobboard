@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Advertisement extends Model
 {
-    protected $fillable = ['title', 'description', 'salary', 'location', 'company_id', 'posted_by'];
+    protected $fillable = ['title', 'description_courte', 'description_longue', 'salary', 'location', 'company_id', 'posted_by'];
 
     public function company()
     {

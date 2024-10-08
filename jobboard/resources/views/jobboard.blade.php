@@ -3,35 +3,28 @@
 @section('title', 'JobBoard')
 
 @section('content')
-<h1 class="text-center">Jobboard</h1>
 
-
-
-<h1>Liste des entreprises</h1>
-
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Website</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($companies as $company)
-            <tr>
-                <td>{{ $company->id }}</td>
-                <td>{{ $company->name }}</td>
-                <td>{{ $company->address }}</td>
-                <td>{{ $company->email }}</td>
-                <td>{{ $company->phone }}</td>
-                <td><a href="{{ $company->website }}">{{ $company->website }}</a></td>
-            </tr>
+<div class="container mx-auto mt-10">
+    <h1 class="text-3xl font-bold text-center mb-5">Liste des Annonces</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        @foreach($advertisements as $advertisement)
+            <div class="bg-white shadow-lg rounded-lg p-5 transition-transform duration-200 hover:shadow-xl hover:scale-105">
+                <h2 class="text-xl font-semibold text-gray-800">{{ $advertisement->title }}</h2>
+                <p class="text-gray-600 mt-2">{{ $advertisement->description_courte }}</p>
+                <p class="text-gray-800 mt-4 font-medium">Salaire: <span class="text-green-600">{{ $advertisement->salary }} €</span></p>
+                <p class="text-gray-800 mt-1">Location: {{ $advertisement->location }}</p>
+                <p class="text-gray-800 mt-1">Entreprise: <span class="font-semibold">{{ $advertisement->company->name }}</span></p>
+                <p class="text-gray-600">Email Entreprise: <a href="mailto:{{ $advertisement->company->email }}" class="text-blue-500">{{ $advertisement->company->email }}</a></p>
+                <div class="mt-4 flex justify-between items-center">
+                    <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">Postuler</a>
+                    <a href="#" class="text-gray-600 ml-2 hover:text-blue-600 view-more" data-id="{{ $advertisement->id }}">Voir plus</a>
+                </div>
+                <div class="description-longue mt-2 hidden" id="description-{{ $advertisement->id }}">
+                </div>
+            </div>
         @endforeach
-    </tbody>
-</table>
+    </div>
+</div>
+
 
 @endsection
