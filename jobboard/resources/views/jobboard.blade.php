@@ -5,7 +5,6 @@
 @section('content')
 
 <div class="container mx-auto mt-10">
-    <h1>Bienvenue sur la page d'accueil</h1>
     <h1 class="text-3xl font-bold text-center mb-5">Liste des Annonces</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach($advertisements as $advertisement)
