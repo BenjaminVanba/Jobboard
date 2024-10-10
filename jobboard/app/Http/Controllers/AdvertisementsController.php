@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Advertisement;
 use Illuminate\Http\Request;
+use App\Models\Advertisement;
 
 class AdvertisementsController extends Controller
 {
@@ -50,14 +50,15 @@ class AdvertisementsController extends Controller
 
     public function update(Request $request, $id)
     {
+
         $validatedData = $request->validate([
-            'title' => 'required|max:255',
-            'description_courte' => 'required',
-            'description_longue' => 'required',
-            'salary' => 'required|numeric',
-            'location' => 'required',
-            'company_id' => 'required|exists:companies,id',
-            'posted_by' => 'required|exists:people,id',
+            'title' => 'max:255',
+            'description_courte',
+            'description_longue',
+            'salary' => 'numeric',
+            'location',
+            'company_id' => 'exists:companies,id',
+            'posted_by' => 'exists:people,id',
         ]);
 
         $advertisement = Advertisement::findOrFail($id);
