@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Backoffice')
+@section('title', 'Backoffice Annonces')
 
 @section('content')
 <div class="container mx-auto mt-10">

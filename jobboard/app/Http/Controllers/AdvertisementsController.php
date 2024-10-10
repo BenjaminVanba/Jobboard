@@ -18,7 +18,7 @@ class AdvertisementsController extends Controller
     public function backoffice()
     {
         $advertisements = Advertisement::all(); // Récupère toutes les annonces
-        return view('backoffice.backoffice', compact('advertisements')); // Vue du backoffice
+        return view('backoffice.backoffice_advertisements', compact('advertisements')); // Vue du backoffice
     }
 
     public function create()
@@ -39,7 +39,7 @@ class AdvertisementsController extends Controller
         ]);
 
         Advertisement::create($validatedData); // Créer une nouvelle annonce
-        return redirect()->route('backoffice')->with('success', 'Annonce créée avec succès');
+        return redirect()->route('backoffice_annonces')->with('success', 'Annonce créée avec succès');
     }
 
     public function edit($id)
@@ -63,14 +63,14 @@ class AdvertisementsController extends Controller
 
         $advertisement = Advertisement::findOrFail($id);
         $advertisement->update($validatedData); // Mettre à jour l'annonce
-        return redirect()->route('backoffice')->with('success', 'Annonce mise à jour avec succès');
+        return redirect()->route('backoffice_annonces')->with('success', 'Annonce mise à jour avec succès');
     }
 
     public function destroy($id)
     {
         $advertisement = Advertisement::findOrFail($id);
         $advertisement->delete(); // Supprimer l'annonce
-        return redirect()->route('backoffice')->with('success', 'Annonce supprimée avec succès');
+        return redirect()->route('backoffice_annonces')->with('success', 'Annonce supprimée avec succès');
     }
 
     public function show($id)

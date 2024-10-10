@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdvertisementsController;
+use App\Http\Controllers\CompanyController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -12,9 +13,14 @@ Route::get('/jobboard', [AdvertisementsController::class, 'jobboard'])->name('jo
 
 Route::get('/advertisements/{id}', [AdvertisementsController::class, 'show']);
 
-Route::get('/backoffice', [AdvertisementsController::class, 'backoffice'])->name("backoffice");
+Route::get('/backoffice/backoffice_advertisements', [AdvertisementsController::class, 'backoffice'])->name("backoffice_annonces");
 
-// ************** CRUD Annonces backoffice *********************** 
+Route::get('/backoffice', function () {
+    return view('backoffice.index'); // Chemin vers votre index
+})->name('backoffice.index');
+
+
+// ************** CRUD Annonces backoffice Annonces *********************** 
 
 // créer une nouvelle annonce 
 Route::get('/backoffice/create', [AdvertisementsController::class, 'create'])->name('advertisement.create');
@@ -30,3 +36,7 @@ Route::put('/backoffice/{id}', [AdvertisementsController::class, 'update'])->nam
 
 // // supprimer une annonce
 Route::delete('/backoffice/{id}', [AdvertisementsController::class, 'destroy'])->name('advertisement.delete');
+
+// ************** CRUD Annonces backoffice Entreprises *********************
+
+Route::get('/backoffice/backoffice_companies', [CompanyController::class, 'index'])->name("companies");

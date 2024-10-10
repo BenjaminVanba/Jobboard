@@ -10,6 +10,6 @@ class CompanyController extends Controller
     public function index()
     {
         $companies = Company::all(); // Récupère toutes les entreprises
-        return view('jobboard', compact('companies')); // Passe les données à la vue
+        return view('backoffice.backoffice_companies', compact('companies')); // Passe les données à la vue
     }
 }

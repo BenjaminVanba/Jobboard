@@ -13,7 +13,7 @@
 <body>
     <header>
 <ul><li><a href="{{ route('home') }}">Accueil</a></li>
-<li><a href="{{ route('backoffice') }}">Backoffice</a></li></ul>    </header>
+<li><a href="{{ route('backoffice.index') }}">Backoffice</a></li></ul>    </header>
 
     <main>
         @yield('content') <!-- Placeholder pour le contenu spécifique à chaque page -->
