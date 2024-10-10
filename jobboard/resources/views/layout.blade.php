@@ -11,9 +11,10 @@
 </head>
 
 <body>
-    <header>
+  
         <ul>
             <li><a href="{{ route('home') }}">Accueil</a></li>
+            <li><a href="{{ route('backoffice.index') }}">Backoffice</a></li>
     
             @if(Auth::check())
                 <li>Bonjour, {{ Auth::user()->first_name }}!</li>
@@ -32,7 +33,7 @@
     
     
     
-    
+   
     <main>
         @yield('content') <!-- Placeholder pour le contenu spécifique à chaque page -->
     </main>

@@ -11,6 +11,8 @@
             <div class="bg-white shadow-lg rounded-lg p-5 transition-transform duration-200 hover:shadow-xl hover:scale-105">
                 <h2 class="text-xl font-semibold text-gray-800">{{ $advertisement->title }}</h2>
                 <p class="text-gray-600 mt-2">{{ $advertisement->description_courte }}</p>
+                <div class="text-sm text-gray-400"><p>Crée le : {{$advertisement->created_at}}</p>
+                <p>Mis a jour le : {{$advertisement->updated_at}}</p></div>
                 <p class="text-gray-800 mt-4 font-medium">Salaire: <span class="text-green-600">{{ $advertisement->salary }} €</span></p>
                 <p class="text-gray-800 mt-1">Location: {{ $advertisement->location }}</p>
                 <p class="text-gray-800 mt-1">Entreprise: <span class="font-semibold">{{ $advertisement->company->name }}</span></p>
