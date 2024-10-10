@@ -42,6 +42,26 @@ Route::delete('/backoffice/{id}', [AdvertisementsController::class, 'destroy'])-
 
 Route::get('/backoffice/backoffice_companies', [CompanyController::class, 'index'])->name("companies");
 
+// Route pour créer une nouvelle entreprise
+Route::get('/backoffice/backoffice_companies_create', [CompanyController::class, 'create'])->name('company.create');
+
+// Route pour enregistrer une nouvelle entreprise
+Route::post('/backoffice/backoffice_companies', [CompanyController::class, 'store'])->name('company.store');
+
+// Route pour éditer une entreprise
+Route::get('/backoffice/backoffice_companies/{id}/edit', [CompanyController::class, 'edit'])->name('company.edit');
+
+// Route pour mettre à jour une entreprise
+Route::put('/backoffice/backoffice_companies/{id}', [CompanyController::class, 'update'])->name('company.update');
+
+// Route pour supprimer une entreprise
+Route::delete('/backoffice/backoffice_companies/{id}', [CompanyController::class, 'destroy'])->name('company.delete');
+
+
+
+
+// *************** Connexion / Deconnexion *********************
+
 Route::get('/register', [PeopleController::class, 'showRegisterForm'])->name('register');
 
 Route::post('/register', [PeopleController::class, 'register']);
@@ -49,6 +69,5 @@ Route::post('/register', [PeopleController::class, 'register']);
 Route::get('/login', [PeopleController::class, 'showLoginForm'])->name('login');
 
 Route::post('/login', [PeopleController::class, 'login']);
-
 
 Route::post('/logout', [PeopleController::class, 'logout'])->name('logout');
