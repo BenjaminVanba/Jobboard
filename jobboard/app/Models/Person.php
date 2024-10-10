@@ -2,12 +2,26 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Person extends Model
+class Person extends Authenticatable
 {
-    protected $fillable = ['first_name', 'last_name', 'email', 'phone', 'role', 'company_id'];
+    use Notifiable;
+
+
+    protected $table = 'people'; // Ajoutez cette ligne si le nom de la table est différent
+
+
+    protected $fillable = ['first_name', 'last_name', 'email', 'phone', 'role', 'company_id', 'mot_de_passe'];
+
+    protected $hidden = ['mot_de_passe', 'remember_token'];
+
+    public function getAuthPassword()
+    {
+        return $this->mot_de_passe;
+        
+    }
 
     public function company()
     {
