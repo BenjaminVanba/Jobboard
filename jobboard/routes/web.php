@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdvertisementsController;
 use App\Http\Controllers\CompanyController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PeopleController;
 
 
 Route::get('/', function () {
@@ -40,3 +41,14 @@ Route::delete('/backoffice/{id}', [AdvertisementsController::class, 'destroy'])-
 // ************** CRUD Annonces backoffice Entreprises *********************
 
 Route::get('/backoffice/backoffice_companies', [CompanyController::class, 'index'])->name("companies");
+
+Route::get('/register', [PeopleController::class, 'showRegisterForm'])->name('register');
+
+Route::post('/register', [PeopleController::class, 'register']);
+
+Route::get('/login', [PeopleController::class, 'showLoginForm'])->name('login');
+
+Route::post('/login', [PeopleController::class, 'login']);
+
+
+Route::post('/logout', [PeopleController::class, 'logout'])->name('logout');
