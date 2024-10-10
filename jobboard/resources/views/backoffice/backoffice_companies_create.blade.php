@@ -23,11 +23,11 @@
 
         <div class="mb-4">
             <label class="block text-gray-700">Téléphone</label>
-            <input type="text" name="phone" class="w-full border border-gray-300 rounded px-4 py-2" required>
+            <input type="tel" name="phone" class="w-full border border-gray-300 rounded px-4 py-2" pattern="[0-9]{10}" required>
         </div>
 
         <div class="mb-4">
-            <label class="block text-gray-700">Site Web</label>
+            <label class="block text-gray-700">Site internet</label>
             <input type="url" name="website" class="w-full border border-gray-300 rounded px-4 py-2">
         </div>
 

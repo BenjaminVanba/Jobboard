@@ -29,47 +29,35 @@ class CompanyController extends Controller
         ]);
 
         Company::create($validatedData); // Créer une nouvelle entreprise
-        return redirect()->route('companies')->with('success', 'Annonce créée avec succès');
+        return redirect()->route('companies')->with('success', 'Entreprise créée avec succès');
     }
 
-    // public function edit($id)
-    // {
-    //     $advertisement = Advertisement::findOrFail($id);
-    //     return view('backoffice.backoffice_edit', compact('advertisement')); // Vue d'édition
-    // }
+    public function edit($id)
+    {
+        $companies = Company::findOrFail($id);
+        return view('backoffice.backoffice_companies_edit', compact('companies')); // Vue d'édition
+    }
 
-    // public function update(Request $request, $id)
-    // {
+    public function update(Request $request, $id)
+    {
 
-    //     $validatedData = $request->validate([
-    //         'title' => 'max:255',
-    //         'description_courte',
-    //         'description_longue',
-    //         'salary' => 'numeric',
-    //         'location',
-    //         'company_id' => 'exists:companies,id',
-    //         'posted_by' => 'exists:people,id',
-    //     ]);
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'address' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|numeric|digits:10',
+            'website' => 'required|url'
+        ]);
 
-    //     $advertisement = Advertisement::findOrFail($id);
-    //     $advertisement->update($validatedData); // Mettre à jour l'annonce
-    //     return redirect()->route('backoffice_annonces')->with('success', 'Annonce mise à jour avec succès');
-    // }
+        $companies = Company::findOrFail($id);
+        $companies->update($validatedData); // Mettre à jour l'annonce
+        return redirect()->route('companies')->with('success', 'Entreprise mise à jour avec succès');
+    }
 
-    // public function destroy($id)
-    // {
-    //     $advertisement = Advertisement::findOrFail($id);
-    //     $advertisement->delete(); // Supprimer l'annonce
-    //     return redirect()->route('backoffice_annonces')->with('success', 'Annonce supprimée avec succès');
-    // }
-
-    // public function show($id)
-    // {
-    //     $advertisement = Advertisement::findOrFail($id);
-
-    //     return response()->json([
-    //         'success' => true,
-    //         'description_longue' => $advertisement->description_longue,
-    //     ]);
-    // }
+    public function destroy($id)
+    {
+        $companies = Company::findOrFail($id);
+        $companies->delete(); // Supprimer l'annonce
+        return redirect()->route('companies')->with('success', 'Entreprise supprimée avec succès');
+    }
 }
