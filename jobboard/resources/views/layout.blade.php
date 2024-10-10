@@ -12,7 +12,8 @@
 
 <body>
     <header>
-<ul><li><a href="{{ route('home') }}">Accueil</a></li></ul>    </header>
+<ul><li><a href="{{ route('home') }}">Accueil</a></li>
+<li><a href="{{ route('backoffice') }}">Backoffice</a></li></ul>    </header>
 
     <main>
         @yield('content') <!-- Placeholder pour le contenu spécifique à chaque page -->

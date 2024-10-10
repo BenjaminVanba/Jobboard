@@ -7,15 +7,23 @@ use Illuminate\Http\Request;
 
 class AdvertisementsController extends Controller
 {
-    public function index()
+    // Méthode pour le jobboard
+    public function jobboard()
     {
         $advertisements = Advertisement::all(); // Récupère toutes les annonces
-        return view('backoffice', compact('advertisements')); // Vue backoffice
+        return view('jobboard', compact('advertisements')); // Vue du jobboard
+    }
+
+    // Méthode pour le backoffice
+    public function backoffice()
+    {
+        $advertisements = Advertisement::all(); // Récupère toutes les annonces
+        return view('backoffice.backoffice', compact('advertisements')); // Vue du backoffice
     }
 
     public function create()
     {
-        return view('backoffice_create');
+        return view('backoffice.backoffice_create'); // Vue du formulaire de création
     }
 
     public function store(Request $request)
@@ -37,7 +45,7 @@ class AdvertisementsController extends Controller
     public function edit($id)
     {
         $advertisement = Advertisement::findOrFail($id);
-        return view('backoffice_edit', compact('advertisement')); // Vue d'édition
+        return view('backoffice.backoffice_edit', compact('advertisement')); // Vue d'édition
     }
 
     public function update(Request $request, $id)
@@ -51,6 +59,10 @@ class AdvertisementsController extends Controller
             'company_id' => 'required|exists:companies,id',
             'posted_by' => 'required|exists:people,id',
         ]);
+
+        $advertisement = Advertisement::findOrFail($id);
+        $advertisement->update($validatedData); // Mettre à jour l'annonce
+        return redirect()->route('backoffice')->with('success', 'Annonce mise à jour avec succès');
     }
 
     public function destroy($id)
