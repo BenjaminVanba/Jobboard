@@ -58,6 +58,10 @@ Route::put('/backoffice/backoffice_companies/{id}', [CompanyController::class, '
 Route::delete('/backoffice/backoffice_companies/{id}', [CompanyController::class, 'destroy'])->name('company.delete');
 
 
+// ************** CRUD Annonces backoffice Entreprises *********************
+
+Route::get('/backoffice/backoffice_people', [PeopleController::class, 'index'])->name("people");
+
 
 
 // *************** Connexion / Deconnexion *********************

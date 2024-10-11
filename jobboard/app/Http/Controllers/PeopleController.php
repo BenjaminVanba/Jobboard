@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Validator;
 class PeopleController extends Controller
 {
 
+
+    public function index()
+    {
+        $people = Person::all(); // Récupère toutes les entreprises
+        return view('backoffice.backoffice_people', compact('people')); // Passe les données à la vue
+    }
+
+
     public function showRegisterForm()
     {
         return view('auth.register');

@@ -10,7 +10,7 @@ class Person extends Authenticatable
     use Notifiable;
 
 
-    protected $table = 'people'; // Ajoutez cette ligne si le nom de la table est différent
+    protected $table = 'people';
 
 
     protected $fillable = ['first_name', 'last_name', 'email', 'phone', 'role', 'company_id', 'mot_de_passe'];
@@ -20,7 +20,6 @@ class Person extends Authenticatable
     public function getAuthPassword()
     {
         return $this->mot_de_passe;
-        
     }
 
     public function company()
