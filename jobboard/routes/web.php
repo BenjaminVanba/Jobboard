@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\AdvertisementsController;
-use App\Http\Controllers\CompanyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PeopleController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ApplicationsController;
+use App\Http\Controllers\AdvertisementsController;
 
 
 Route::get('/', function () {
@@ -52,3 +53,13 @@ Route::post('/login', [PeopleController::class, 'login']);
 
 
 Route::post('/logout', [PeopleController::class, 'logout'])->name('logout');
+
+
+
+
+// Route pour afficher le formulaire de candidature
+Route::get('/advertisement/{id}/apply', [ApplicationsController::class, 'showApplicationForm'])->name('apply');
+
+// Route pour soumettre la candidature
+Route::post('/advertisement/{id}/apply', [ApplicationsController::class, 'submitApplication'])->name('job.submitApplication');
+
