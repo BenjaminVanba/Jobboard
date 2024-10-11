@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PeopleController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ApplicationsController;
 use App\Http\Controllers\AdvertisementsController;
 
@@ -82,3 +83,9 @@ Route::get('/advertisement/{id}/apply', [ApplicationsController::class, 'showApp
 // Route pour soumettre la candidature
 Route::post('/advertisement/{id}/apply', [ApplicationsController::class, 'submitApplication'])->name('job.submitApplication');
 
+
+
+
+
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');

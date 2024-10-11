@@ -17,6 +17,12 @@
             <li><a href="{{ route('backoffice.index') }}">Backoffice</a></li>
     
             @if(Auth::check())
+
+      
+            <!-- Bouton de modification du compte -->
+            <li><a href="{{ route('profile.edit') }}">Modifier mon compte</a></li>
+
+
                 <li>Bonjour, {{ Auth::user()->first_name }}!</li>
                 <li>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: inline;">
