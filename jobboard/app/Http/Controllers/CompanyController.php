@@ -23,7 +23,7 @@ class CompanyController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'address' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|unique:companies,email',
             'phone' => 'required|numeric',
             'website' => 'required',
         ]);
@@ -44,7 +44,7 @@ class CompanyController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'address' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:companies,email',
             'phone' => 'required|numeric|digits:10',
             'website' => 'required|url'
         ]);
