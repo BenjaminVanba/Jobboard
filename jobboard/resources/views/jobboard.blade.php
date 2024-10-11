@@ -18,7 +18,7 @@
                 <p class="text-gray-800 mt-1">Entreprise: <span class="font-semibold">{{ $advertisement->company->name }}</span></p>
                 <p class="text-gray-600">Email Entreprise: <a href="mailto:{{ $advertisement->company->email }}" class="text-blue-500">{{ $advertisement->company->email }}</a></p>
                 <div class="mt-4 flex justify-between items-center">
-                    <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">Postuler</a>
+                    <a href="{{ route('apply', $advertisement->id) }}" class="btn btn-primary">Postuler</a>
                     <a href="#" class="text-gray-600 ml-2 hover:text-blue-600 view-more" data-id="{{ $advertisement->id }}">Voir plus</a>
                 </div>
                 <div class="description-longue mt-2 hidden" id="description-{{ $advertisement->id }}">
