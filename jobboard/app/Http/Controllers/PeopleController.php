@@ -60,7 +60,7 @@ class PeopleController extends Controller
             Log::info('Utilisateur créé avec succès: ' . $request->email);
 
             // Redirection après succès
-            return redirect()->route('home')->with('success', 'Inscription réussie !');
+            return redirect()->route('login')->with('success', 'Inscription réussie !');
         } catch (\Exception $e) {
             Log::error('Erreur lors de la création de l\'utilisateur: ' . $e->getMessage());
             return redirect()->back()->with('error', 'Une erreur est survenue lors de l\'inscription.');
