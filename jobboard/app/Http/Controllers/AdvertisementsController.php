@@ -45,7 +45,7 @@ class AdvertisementsController extends Controller
     public function edit($id)
     {
         $advertisement = Advertisement::findOrFail($id);
-        return view('backoffice.backoffice_edit', compact('advertisement')); // Vue d'édition
+        return view('backoffice.backoffice_edit', compact('advertisement'));
     }
 
     public function update(Request $request, $id)
