@@ -46,6 +46,19 @@
             <input type="text" name="phone" id="phone" class="form-control" value="{{ old('phone', $user->phone) }}" required>
         </div>
 
+        <div class="form-group">
+            <label for="password">Nouveau Mot de Passe (facultatif)</label>
+            <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Entrez un nouveau mot de passe">
+            @error('password')
+                <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
+        </div>
+        
+        <div class="form-group">
+            <label for="password_confirmation">Confirmer le Mot de Passe</label>
+            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Confirmez le mot de passe">
+        </div>
+
         <button type="submit" class="btn btn-primary">Mettre à jour</button>
     </form>
 </div>

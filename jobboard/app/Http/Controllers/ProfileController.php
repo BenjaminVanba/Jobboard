@@ -32,8 +32,9 @@ class ProfileController extends Controller
         $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:people',
+            'email' => 'required|string|email|max:255|unique:people,email,' . Auth::id(), // Utilisez l'ID de l'utilisateur connecté
             'phone' => 'required|string|max:20',
+            'password' => 'nullable|string|min:8|confirmed', // Mot de passe facultatif et doit être confirmé
         ]);
     
         // Vérifiez si l'utilisateur est connecté
@@ -50,12 +51,18 @@ class ProfileController extends Controller
         $user->email = $request->input('email');
         $user->phone = $request->input('phone');
     
+        // Mettez à jour le mot de passe si fourni
+        if ($request->filled('password')) {
+            $user->mot_de_passe = bcrypt($request->input('password')); // Hash le mot de passe
+        }
+    
         // Enregistrez les modifications
         $user->save();
     
         // Redirigez avec un message de succès
         return redirect()->route('profile.edit')->with('success', 'Votre compte a été mis à jour avec succès.');
     }
+    
     
     
     
