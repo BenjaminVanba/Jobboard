@@ -130,8 +130,8 @@ class PeopleController extends Controller
             'email' => 'required|string|email|max:255|unique:people',
             'phone' => 'required|string|max:15',
             'role' => 'required|string',
-            'company_id' => 'nullable|integer',
-            'mot_de_passe' => 'required|string|min:8', // Validation du mot de passe
+            'company_id' => 'nullable|integer|exists:companies,id',
+            'mot_de_passe' => 'required|string|min:8',
         ]);
 
         // Hashage du mot de passe après la validation
@@ -161,7 +161,7 @@ class PeopleController extends Controller
             'email' => 'required|string|email|max:255|unique:people,email,' . $id,
             'phone' => 'required|string|max:15',
             'role' => 'required|string',
-            'company_id' => 'nullable|integer',
+            'company_id' => 'nullable|integer|exists:companies,id',
         ]);
 
         $person = Person::findOrFail($id);
