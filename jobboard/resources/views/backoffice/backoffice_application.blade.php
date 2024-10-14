@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container mx-auto mt-10">
-    <h1 class="text-3xl font-bold text-center mb-5">Gestion des Applications</h1>
+    <h1 class="text-3xl font-bold text-center mb-5">Gestion des Candidatures</h1>
 
     <!-- Message de succès après une action (édition, suppression, etc.) -->
     @if(session('success'))
@@ -24,6 +24,7 @@
                     <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Email</th>
                     <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Téléphone</th>
                     <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Statut</th>
+                    <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">CV</th>
                     <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Motivation</th>
                     <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Actions</th>
                 </tr>
@@ -38,6 +39,9 @@
                     <td class="w-1/6 py-3 px-4">{{ $application->phone }}</td>
                     <td class="w-1/6 py-3 px-4">{{ ucfirst($application->status) }}</td>
                     <td class="w-1/6 py-3 px-4">
+                        <a href="{{ Storage::url($application->cv) }}" target="_blank">{{ ucfirst(basename($application->cv)) }}</a>
+                    </td>
+                                        <td class="w-1/6 py-3 px-4">
                         {{ \Illuminate\Support\Str::limit($application->cover_letter, 50) }}
                     </td>
                                         <td class="w-1/6 py-3 px-4">

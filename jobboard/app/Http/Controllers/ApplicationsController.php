@@ -39,6 +39,11 @@ class ApplicationsController extends Controller
             'advertisement_id' => 'required|integer|exists:advertisements,id',
         ]);
 
+        if ($request->hasFile('cv')) {
+            $cvPath = $request->file('cv')->store('cvs', 'public'); // Stockage du fichier
+            $validatedData['cv'] = $cvPath; // Ajoutez le chemin du CV aux données validées
+        }
+
         Application::create($validatedData); // Créer une nouvelle entreprise
         return redirect()->route('applications')->with('success', 'Application créée avec succès');
     }
@@ -61,6 +66,11 @@ class ApplicationsController extends Controller
             'cover_letter' => 'nullable|string',
             'advertisement_id' => 'required|integer|exists:advertisements,id',
         ]);
+
+        if ($request->hasFile('cv')) {
+            $cvPath = $request->file('cv')->store('cvs', 'public'); // Stockage du fichier
+            $validatedData['cv'] = $cvPath; // Ajoutez le chemin du CV aux données validées
+        }
 
         $application = Application::findOrFail($id);
         $application->update($validatedData); // Mettre à jour l'annonce

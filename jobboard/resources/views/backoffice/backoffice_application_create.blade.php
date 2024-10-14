@@ -18,7 +18,7 @@
     @endif
 
     <!-- Formulaire de création d'une application -->
-    <form action="{{ route('applications.store') }}" method="POST" class="max-w-xl mx-auto">
+    <form action="{{ route('applications.store') }}" method="POST" class="max-w-xl mx-auto" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-4">
@@ -57,9 +57,10 @@
         </div>
 
         <div class="mb-4">
-            <label for="cv" class="block text-gray-700 font-bold mb-2">CV (URL) :</label>
-            <input type="text" name="cv" id="cv" value="{{ old('cv') }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
+            <label for="cv" class="block text-gray-700 font-bold mb-2">CV (fichier) :</label>
+            <input type="file" name="cv" id="cv" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
         </div>
+        
 
         <div class="mb-4">
             <label for="cover_letter" class="block text-gray-700 font-bold mb-2">Lettre de motivation :</label>
