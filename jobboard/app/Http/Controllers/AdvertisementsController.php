@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Advertisement;
+use Illuminate\Support\Facades\Auth;
+
 
 class AdvertisementsController extends Controller
 {
@@ -82,4 +84,6 @@ class AdvertisementsController extends Controller
             'description_longue' => $advertisement->description_longue,
         ]);
     }
+
+    
 }
