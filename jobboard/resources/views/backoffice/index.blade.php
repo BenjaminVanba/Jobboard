@@ -9,10 +9,10 @@
     
     <ul class="list-disc pl-5">
         <li><a href="{{ route('backoffice_annonces') }}" class="text-blue-500">Voir les annonces</a></li>
-        {{-- <li><a href="{{ route('advertisement.index') }}" class="text-blue-500">Lister toutes les annonces</a></li> --}}
         <li><a href="{{ route('companies') }}" class="text-blue-500">Gérer les entreprises</a></li>
-        <!-- Ajoutez d'autres liens vers d'autres pages du backoffice -->
+        <li><a href="{{ route('people') }}" class="text-blue-500">Gérer les personnes</a></li>
     </ul>
+    
 </div>
 
 @endsection
