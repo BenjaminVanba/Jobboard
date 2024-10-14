@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class CompanyController extends Controller
 {
@@ -60,4 +62,6 @@ class CompanyController extends Controller
         $companies->delete(); // Supprimer l'annonce
         return redirect()->route('companies')->with('success', 'Entreprise supprimée avec succès');
     }
+ 
+
 }

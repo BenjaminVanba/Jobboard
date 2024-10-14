@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PeopleController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
@@ -107,3 +109,5 @@ Route::post('/advertisement/{id}/apply', [ApplicationsController::class, 'submit
 
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+
