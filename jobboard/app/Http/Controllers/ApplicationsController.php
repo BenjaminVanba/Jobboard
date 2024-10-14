@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Log;
 
 class ApplicationsController extends Controller
 {
-
+    // ************************************** CRUD *********************************************************
     public function index()
     {
         $applications = Application::all(); // Récupère toutes les applications
@@ -42,6 +42,39 @@ class ApplicationsController extends Controller
         Application::create($validatedData); // Créer une nouvelle entreprise
         return redirect()->route('applications')->with('success', 'Application créée avec succès');
     }
+
+    public function edit($id)
+    {
+        $application = Application::findOrFail($id);
+        return view('backoffice.backoffice_application_edit', compact('application')); // Vue d'édition
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $validatedData = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:people',
+            'phone' => 'required|string|max:20',
+            'cv' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
+            'cover_letter' => 'nullable|string',
+            'advertisement_id' => 'required|integer|exists:advertisements,id',
+        ]);
+
+        $application = Application::findOrFail($id);
+        $application->update($validatedData); // Mettre à jour l'annonce
+        return redirect()->route('applications')->with('success', 'Candidature mise à jour avec succès');
+    }
+
+    public function destroy($id)
+    {
+        $application = Application::findOrFail($id);
+        $application->delete(); // Supprimer l'annonce
+        return redirect()->route('applications')->with('success', 'Candidature supprimée avec succès');
+    }
+
+    //*********************************     FIN DU CRUD  *************************************/
 
     public function showApplicationForm($id)
     {
