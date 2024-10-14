@@ -27,7 +27,6 @@ class ApplicationsController extends Controller
     {
         return view('backoffice.backoffice_application_create'); // Vue du formulaire de création
     }
-    // Faut que je clone la page de ma jobboard enft
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -37,7 +36,7 @@ class ApplicationsController extends Controller
             'phone' => 'required|string|max:20',
             'cv' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
             'cover_letter' => 'nullable|string',
-            'advertisement_id' => 'required|integer',
+            'advertisement_id' => 'required|integer|exists:advertisements,id',
         ]);
 
         Application::create($validatedData); // Créer une nouvelle entreprise

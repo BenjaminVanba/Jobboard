@@ -52,6 +52,11 @@
         </div>
 
         <div class="mb-4">
+            <label class="block text-gray-700">ID de l'annonce</label>
+            <input type="number" name="advertisement_id" class="w-full border border-gray-300 rounded px-4 py-2">
+        </div>
+
+        <div class="mb-4">
             <label for="cv" class="block text-gray-700 font-bold mb-2">CV (URL) :</label>
             <input type="text" name="cv" id="cv" value="{{ old('cv') }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
         </div>
