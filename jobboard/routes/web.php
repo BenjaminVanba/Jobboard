@@ -79,6 +79,21 @@ Route::put('/backoffice/backoffice_people/{id}', [PeopleController::class, 'upda
 // Route pour supprimer une entreprise
 Route::delete('/backoffice/backoffice_people/{id}', [PeopleController::class, 'destroy'])->name('people.delete');
 
+// ************** CRUD Annonces backoffice Utilisateurs *********************
+
+Route::get('/backoffice/backoffice_application', [ApplicationsController::class, 'index'])->name("applications");
+
+// Route pour créer une nouvelle candidature
+
+Route::get('/backoffice/backoffice_application_create', [ApplicationsController::class, 'create'])->name("applications.create");
+
+// Route pour enregistrer une nouvelle personne
+
+Route::post('/backoffice/backoffice_application', [ApplicationsController::class, 'store'])->name('applications.store');
+
+
+
+
 
 // *************** Connexion / Deconnexion *********************
 

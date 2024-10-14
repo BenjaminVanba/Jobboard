@@ -11,6 +11,7 @@
         <li><a href="{{ route('backoffice_annonces') }}" class="text-blue-500">Voir les annonces</a></li>
         <li><a href="{{ route('companies') }}" class="text-blue-500">Gérer les entreprises</a></li>
         <li><a href="{{ route('people') }}" class="text-blue-500">Gérer les personnes</a></li>
+        <li><a href="{{ route('applications') }}" class="text-blue-500">Gérer les applications</a></li>
     </ul>
     
 </div>
