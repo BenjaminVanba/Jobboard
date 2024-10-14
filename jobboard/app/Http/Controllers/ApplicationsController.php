@@ -161,7 +161,7 @@ class ApplicationsController extends Controller
 
     
     
-    }
+    
     
     
     
