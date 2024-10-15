@@ -259,4 +259,4 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 
 
-Route::get('/advertisement/search', [AdvertisementsController::class, 'search'])->name('advertisement.search');
+Route::get('/advertisement/search', [AdvertisementsController::class, 'search'])->name('job.search');
