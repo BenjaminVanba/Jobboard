@@ -1,10 +1,10 @@
 @extends('layout')
 
-@section('title', 'Créer une Application')
+@section('title', 'Créer une Candidature')
 
 @section('content')
 <div class="container mx-auto mt-10">
-    <h1 class="text-3xl font-bold text-center mb-5">Créer une Nouvelle Application</h1>
+    <h1 class="text-3xl font-bold text-center mb-5">Créer une nouvelle Candidature</h1>
 
     <!-- Affichage des erreurs de validation -->
     @if ($errors->any())
@@ -64,13 +64,13 @@
 
         <div class="mb-4">
             <label for="cover_letter" class="block text-gray-700 font-bold mb-2">Lettre de motivation :</label>
-            <input type="text" name="cover_letter" id="cover_letter" value="{{ old('cover_letter') }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" >
+            <textarea name="cover_letter" id="cover_letter" value="{{ old('cover_letter') }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" cols="30" rows="10"></textarea>
         </div>
 
         <!-- Bouton pour soumettre le formulaire -->
         <div class="flex items-center justify-between">
-            <button type="submit" class="bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-600 focus:outline-none focus:shadow-outline">
-                Créer l'Application
+            <button type="submit" class="bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-600 focus:outline-none focus:shadow-outline mb-4">
+                Créer la Candidature
             </button>
         </div>
     </form>

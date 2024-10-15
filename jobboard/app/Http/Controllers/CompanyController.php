@@ -4,16 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 
 class CompanyController extends Controller
 {
+
+    // Récupère toutes les entreprises
     public function index()
     {
-        $companies = Company::all(); // Récupère toutes les entreprises
+        $companies = Company::all();
         return view('backoffice.backoffice_companies', compact('companies')); // Passe les données à la vue
     }
+
+    // ************************************** CRUD Entreprises *********************************************************
 
     public function create()
     {
