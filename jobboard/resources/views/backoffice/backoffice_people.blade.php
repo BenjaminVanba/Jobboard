@@ -15,7 +15,7 @@
     
     <!-- Tableau des personnes -->
     <div class="overflow-x-auto">
-        <table class="min-w-full bg-white">
+        <table class="min-w-full  bg-white">
             <thead class="bg-gray-800 text-white">
                 <tr>
                     <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Prénom</th>
@@ -39,6 +39,7 @@
                         {{ $person->company ? $person->company->name : 'Liée à aucune entreprise' }}
                     </td>
                     <td class="w-1/6 py-3 px-4">
+                        <div class="flex space-x-2">
                         <a href="{{ route('people.edit', $person->id) }}" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition">Éditer</a>
                         
                         <!-- Formulaire pour la suppression -->
@@ -47,6 +48,7 @@
                             @method('DELETE')
                             <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition ml-2">Supprimer</button>
                         </form>
+                        </div>
                     </td>
                 </tr>
                 @endforeach

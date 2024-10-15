@@ -39,12 +39,15 @@
                     <td class="w-1/6 py-3 px-4">{{ $application->phone }}</td>
                     <td class="w-1/6 py-3 px-4">{{ ucfirst($application->status) }}</td>
                     <td class="w-1/6 py-3 px-4">
-                        <a href="{{ Storage::url($application->cv) }}" target="_blank">{{ ucfirst(basename($application->cv)) }}</a>
+                        <a class="bg-gray-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition" href="{{ Storage::url($application->cv) }}" target="_blank">{{ ucfirst(basename($application->cv)) }}</a>
                     </td>
                                         <td class="w-1/6 py-3 px-4">
                         {{ \Illuminate\Support\Str::limit($application->cover_letter, 50) }}
                     </td>
+
                                         <td class="w-1/6 py-3 px-4">
+                    <div class="flex space-x-2">
+
                         <a href="{{ route('applications.edit', $application->id) }}" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition">Éditer</a>
 
                         <!-- Formulaire pour la suppression -->
@@ -53,6 +56,7 @@
                             @method('DELETE')
                             <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition ml-2">Supprimer</button>
                         </form>
+                    </div>
                     </td>
                 </tr>
                 @endforeach
@@ -62,7 +66,7 @@
 
     <!-- Lien pour ajouter une nouvelle application -->
     <div class="mt-4">
-        <a href="{{ route('applications.create') }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">Ajouter une nouvelle application</a>
+        <a href="{{ route('applications.create') }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">Ajouter une nouvelle candidature</a>
     </div>
 </div>
 @endsection

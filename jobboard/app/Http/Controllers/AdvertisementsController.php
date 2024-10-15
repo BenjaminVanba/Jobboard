@@ -4,24 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Advertisement;
-use Illuminate\Support\Facades\Auth;
 
 
 
 
 class AdvertisementsController extends Controller
 {
-    // Méthode pour le jobboard
+    // Affiche le jobboard
     public function jobboard()
     {
         $advertisements = Advertisement::all(); // Récupère toutes les annonces
         return view('jobboard', compact('advertisements')); // Vue du jobboard
     }
 
-    // Méthode pour le backoffice
+    //*****************************     CRUD Annonces *******************************************/
+
+
+    // Récupere toutes les annonces
     public function backoffice()
     {
-        $advertisements = Advertisement::all(); // Récupère toutes les annonces
+        $advertisements = Advertisement::all();
         return view('backoffice.backoffice_advertisements', compact('advertisements')); // Vue du backoffice
     }
 
@@ -46,12 +48,15 @@ class AdvertisementsController extends Controller
         return redirect()->route('backoffice_annonces')->with('success', 'Annonce créée avec succès');
     }
 
+    // Viens récupérer les différents ID de chaque annonce
     public function edit($id)
     {
         $advertisement = Advertisement::findOrFail($id);
         return view('backoffice.backoffice_edit', compact('advertisement'));
     }
 
+
+    // Mettre à jour l'annonce
     public function update(Request $request, $id)
     {
 
@@ -66,10 +71,11 @@ class AdvertisementsController extends Controller
         ]);
 
         $advertisement = Advertisement::findOrFail($id);
-        $advertisement->update($validatedData); // Mettre à jour l'annonce
+        $advertisement->update($validatedData);
         return redirect()->route('backoffice_annonces')->with('success', 'Annonce mise à jour avec succès');
     }
 
+    // Supprimer l'annonce
     public function destroy($id)
     {
         $advertisement = Advertisement::findOrFail($id);
@@ -77,6 +83,7 @@ class AdvertisementsController extends Controller
         return redirect()->route('backoffice_annonces')->with('success', 'Annonce supprimée avec succès');
     }
 
+    // Affichage dynamique de la description longue
     public function show($id)
     {
         $advertisement = Advertisement::findOrFail($id);

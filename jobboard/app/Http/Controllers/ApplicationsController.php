@@ -4,22 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 use App\Models\Advertisement;
 use App\Models\Application;
-use App\Models\Person;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
-
-
 
 
 class ApplicationsController extends Controller
 {
-    // ************************************** CRUD *********************************************************
+    // ************************************** CRUD Candidatures *********************************************************
+
+    // Récupère toutes les candidatures
     public function index()
     {
-        $applications = Application::all(); // Récupère toutes les applications
+        $applications = Application::all();
         return view('backoffice.backoffice_application', compact('applications')); // Passe les données à la vue
     }
 
@@ -40,12 +37,12 @@ class ApplicationsController extends Controller
         ]);
 
         if ($request->hasFile('cv')) {
-            $cvPath = $request->file('cv')->store('cvs', 'public'); // Stockage du fichier
+            $cvPath = $request->file('cv')->store('cvs', 'public'); // Stockage du fichier dans le dossier : storage/app/public/cvs
             $validatedData['cv'] = $cvPath; // Ajoutez le chemin du CV aux données validées
         }
 
         Application::create($validatedData); // Créer une nouvelle entreprise
-        return redirect()->route('applications')->with('success', 'Application créée avec succès');
+        return redirect()->route('applications')->with('success', 'Candidature créée avec succès');
     }
 
     public function edit($id)
@@ -68,7 +65,7 @@ class ApplicationsController extends Controller
         ]);
 
         if ($request->hasFile('cv')) {
-            $cvPath = $request->file('cv')->store('cvs', 'public'); // Stockage du fichier
+            $cvPath = $request->file('cv')->store('cvs', 'public'); // Stockage du fichier dans le bon répertoire 
             $validatedData['cv'] = $cvPath; // Ajoutez le chemin du CV aux données validées
         }
 
@@ -84,22 +81,24 @@ class ApplicationsController extends Controller
         return redirect()->route('applications')->with('success', 'Candidature supprimée avec succès');
     }
 
-    //*********************************     FIN DU CRUD  *************************************/
+    //*********************************     FIN DU CRUD des candidatures *************************************/
 
     public function showApplicationForm($id)
     {
         // Récupération de l'annonce
+
         $advertisement = Advertisement::find($id);
 
-        // Vérifiez si l'annonce existe
         if (!$advertisement) {
             return redirect()->route('home')->with('error', 'Annonce non trouvée.');
         }
 
         // Récupérer l'utilisateur connecté
+
         $user = Auth::check() ? Auth::user() : null;
 
         // Passez les données à la vue
+
         return view('apply', [
             'advertisement' => $advertisement,
             'user' => $user, // Passer l'utilisateur s'il est connecté
@@ -111,6 +110,7 @@ class ApplicationsController extends Controller
     public function submitApplication(Request $request, $id)
     {
         // Validation des données
+
         $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
@@ -121,14 +121,16 @@ class ApplicationsController extends Controller
         ]);
 
         // Enregistrer la candidature
+
         $application = new Application();  // Initialiser l'objet avant de l'utiliser
-        $application->advertisement_id = $id; // ID de l'annonce
-        $application->first_name = $request->first_name; // Prénom
-        $application->last_name = $request->last_name; // Nom de famille
+        $application->advertisement_id = $id;
+        $application->first_name = $request->first_name;
+        $application->last_name = $request->last_name;
         $application->email = $request->email;
         $application->phone = $request->phone;
 
         // Ajouter le champ applicant_id s'il est connecté
+
         if (Auth::check()) {
             $application->applicant_id = Auth::id(); // Utiliser l'ID de l'utilisateur authentifié
             Log::info('Applicant ID from Auth: ' . Auth::id());
@@ -137,35 +139,29 @@ class ApplicationsController extends Controller
             Log::info('No user is logged in.');
         }
 
-        // Définir le statut automatiquement à "pending"
+        // Définir le statut automatiquement à "pending" ( en attente )
+
         $application->status = 'pending';
 
         // Sauvegarder le CV
+
         if ($request->hasFile('cv')) {
             $cvPath = $request->file('cv')->store('cvs', 'public');
             $application->cv = $cvPath;
         }
 
         // Sauvegarder la lettre de motivation (facultatif)
+
         $application->cover_letter = $request->cover_letter;
 
         // Enregistrement de la candidature
+
         $application->save();
 
 
 
         // Redirection après soumission
+
         return redirect()->route('home')->with('success', 'Votre candidature a été soumise avec succès.');
     }
-
 }
-
-
-    
-    
-    
-    
-    
-    
-    
-

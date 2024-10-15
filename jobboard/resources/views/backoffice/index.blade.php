@@ -9,23 +9,23 @@
     
     <ul class="space-y-4">
         <li>
-            <a href="{{ route('backoffice_annonces') }}" class="block p-4 bg-white rounded-md shadow hover:bg-blue-500 hover:text-white text-blue-500 transition duration-300 ease-in-out">
+            <a href="{{ route('backoffice_annonces') }}" class="block p-4 rounded-md shadow hover:bg-blue-500 hover:text-white text-blue-500 transition duration-300 ease-in-out">
                 Voir les annonces
             </a>
         </li>
         <li>
-            <a href="{{ route('companies') }}" class="block p-4 bg-white rounded-md shadow hover:bg-blue-500 hover:text-white text-blue-500 transition duration-300 ease-in-out">
+            <a href="{{ route('companies') }}" class="block p-4 rounded-md shadow hover:bg-blue-500 hover:text-white text-blue-500 transition duration-300 ease-in-out">
                 Gérer les entreprises
             </a>
         </li>
         <li>
-            <a href="{{ route('people') }}" class="block p-4 bg-white rounded-md shadow hover:bg-blue-500 hover:text-white text-blue-500 transition duration-300 ease-in-out">
+            <a href="{{ route('people') }}" class="block p-4 rounded-md shadow hover:bg-blue-500 hover:text-white text-blue-500 transition duration-300 ease-in-out">
                 Gérer les personnes
             </a>
         </li>
         <li>
-            <a href="{{ route('applications') }}" class="block p-4 bg-white rounded-md shadow hover:bg-blue-500 hover:text-white text-blue-500 transition duration-300 ease-in-out">
-                Gérer les applications
+            <a href="{{ route('applications') }}" class="block p-4 rounded-md shadow hover:bg-blue-500 hover:text-white text-blue-500 transition duration-300 ease-in-out">
+                Gérer les candidatures
             </a>
         </li>
     </ul>

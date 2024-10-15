@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Validator;
 class PeopleController extends Controller
 {
 
-
+    // Récupère toutes les entreprises
     public function index()
     {
-        $people = Person::all(); // Récupère toutes les entreprises
+        $people = Person::all();
         return view('backoffice.backoffice_people', compact('people')); // Passe les données à la vue
     }
 
@@ -28,8 +28,9 @@ class PeopleController extends Controller
     }
 
 
+    // *************************** Inscription des utilisateurs ************************ 
 
-    // Traiter l'inscription
+
     public function register(Request $request)
     {
         // Validation des données
@@ -49,9 +50,6 @@ class PeopleController extends Controller
                 ->withInput();
         }
 
-        // Ajouter un log pour suivre l'inscription
-        Log::info('Tentative d\'inscription pour: ' . $request->email);
-
         try {
             // Créer l'utilisateur
             Person::create([
@@ -64,18 +62,22 @@ class PeopleController extends Controller
                 'mot_de_passe' => Hash::make($request->mot_de_passe),
             ]);
 
-            // Ajouter un log pour confirmer la création
-            Log::info('Utilisateur créé avec succès: ' . $request->email);
-
             // Redirection après succès
             return redirect()->route('login')->with('success', 'Inscription réussie !');
         } catch (\Exception $e) {
-            Log::error('Erreur lors de la création de l\'utilisateur: ' . $e->getMessage());
             return redirect()->back()->with('error', 'Une erreur est survenue lors de l\'inscription.');
         }
     }
 
+    // *************************** Fin d'inscription des utilisateurs ************************ 
 
+
+
+
+
+
+
+    // *************************** Connexion des utilisateurs ************************
 
     public function showLoginForm()
     {
@@ -93,22 +95,24 @@ class PeopleController extends Controller
         // Trouver l'utilisateur par email
         $user = Person::where('email', $credentials['email'])->first();
 
-        // Vérifier si l'utilisateur existe et si le mot de passe est correct
+        // Vérifie si l'utilisateur existe et si le mot de passe est correct
         if ($user && Hash::check($credentials['mot_de_passe'], $user->mot_de_passe)) {
             Auth::login($user); // Authentifier l'utilisateur
             $request->session()->regenerate(); // Régénérer la session
 
-            // Vérifiez si l'utilisateur est un administrateur
+
+            // Vérifie si l'utilisateur est un administrateur
             if ($user->role === 'admin') {
                 return redirect()->route('backoffice.index'); // Redirige vers le tableau de bord admin
             }
 
-            return redirect()->intended('/'); // Page après la connexion pour les autres utilisateurs
+            return redirect()->intended('/'); // Redirige les utilisateurs connectés sur la homepage
         }
 
         return back()->withErrors(['email' => 'Les informations fournies sont incorrectes.']);
     }
 
+    // *************************** Fin connexion des utilisateurs ************************
 
     public function logout(Request $request)
     {
@@ -119,7 +123,7 @@ class PeopleController extends Controller
     }
 
 
-    //*********************************** CRUD People ***********************************************************************/
+    // *************************** CRUD utilisateurs ************************
 
 
     public function create()
@@ -159,7 +163,6 @@ class PeopleController extends Controller
 
     public function update(Request $request, $id)
     {
-        // return redirect()->route('people')->with('success', 'utilisateur  mise à jour avec succès');
         // Valider les données du formulaire
         $validatedData = $request->validate([
             'first_name' => 'required|string|max:255',
@@ -185,7 +188,7 @@ class PeopleController extends Controller
 
         $person->save();
 
-        return redirect()->route('people')->with('success', 'Personne mise à jour avec succès');
+        return redirect()->route('people')->with('success', 'Utilisateur mise à jour avec succès');
     }
 
     public function destroy($id)

@@ -16,7 +16,7 @@
                 <p class="text-gray-800 mt-4 font-medium">Salaire: <span class="text-green-600">{{ $advertisement->salary }} €</span></p>
                 <p class="text-gray-800 mt-1">Location: {{ $advertisement->location }}</p>
                 <p class="text-gray-800 mt-1">Entreprise: <span class="font-semibold">{{ $advertisement->company->name }}</span></p>
-                <p class="text-gray-600 ">Email Entreprise: <a href="mailto:{{ $advertisement->company->email }}" class="text-blue-500">{{ $advertisement->company->email }}</a></p>
+                <p class="text-gray-600">Email Entreprise: <a href="mailto:{{ $advertisement->company->email }}" class="text-gray-800 hover:text-blue-600">{{ $advertisement->company->email }}</a></p>
                 <div class="mt-4 flex justify-between items-center">
                     <a href="{{ route('apply', $advertisement->id) }}" class="btn btn-primary">Postuler</a>
                     <a href="#" class="text-gray-600 ml-2 hover:text-blue-600 view-more" data-id="{{ $advertisement->id }}">Voir plus</a>

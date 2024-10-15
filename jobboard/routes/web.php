@@ -214,6 +214,7 @@ Route::put('/backoffice/backoffice_application/{id}', function (Request $request
 })->name('applications.update');
 
 // Route pour supprimer une candidature
+
 Route::delete('/backoffice/backoffice_application/{id}', function ($id) {
     if (Auth::check() && Auth::user()->role === 'admin') {
         return app(ApplicationsController::class)->destroy($id);

@@ -11,15 +11,15 @@ class Application extends Model
     use HasFactory;
 
     protected $fillable = [
-        'advertisement_id',  // ID de l'offre d'emploi
-        'applicant_id',      // ID du candidat
-        'status',            // Statut de la candidature (par exemple: en attente, acceptée, rejetée)
-        'first_name',        // Prénom du candidat
-        'last_name',         // Nom de famille du candidat
-        'email',             // Email du candidat
-        'phone',             // Numéro de téléphone du candidat
-        'cv',                // Chemin vers le CV du candidat
-        'cover_letter'       // Lettre de motivation (facultative)
+        'advertisement_id',
+        'applicant_id',
+        'status',
+        'first_name',
+        'last_name',
+        'email',
+        'phone',
+        'cv',
+        'cover_letter'
     ];
 
     public function advertisement()
