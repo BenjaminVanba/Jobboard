@@ -89,26 +89,26 @@ class PeopleController extends Controller
             'email' => ['required', 'email'],
             'mot_de_passe' => ['required'],
         ]);
-    
+
         // Trouver l'utilisateur par email
         $user = Person::where('email', $credentials['email'])->first();
-    
+
         // Vérifier si l'utilisateur existe et si le mot de passe est correct
         if ($user && Hash::check($credentials['mot_de_passe'], $user->mot_de_passe)) {
             Auth::login($user); // Authentifier l'utilisateur
             $request->session()->regenerate(); // Régénérer la session
-    
+
             // Vérifiez si l'utilisateur est un administrateur
             if ($user->role === 'admin') {
                 return redirect()->route('backoffice.index'); // Redirige vers le tableau de bord admin
             }
-    
+
             return redirect()->intended('/'); // Page après la connexion pour les autres utilisateurs
         }
-    
+
         return back()->withErrors(['email' => 'Les informations fournies sont incorrectes.']);
     }
-    
+
 
     public function logout(Request $request)
     {
@@ -153,13 +153,13 @@ class PeopleController extends Controller
     public function edit($id)
     {
         $person = Person::findOrFail($id);
-
         return view('backoffice.backoffice_people_edit', compact('person'));
     }
 
 
     public function update(Request $request, $id)
     {
+        // return redirect()->route('people')->with('success', 'utilisateur  mise à jour avec succès');
         // Valider les données du formulaire
         $validatedData = $request->validate([
             'first_name' => 'required|string|max:255',
@@ -194,7 +194,4 @@ class PeopleController extends Controller
         $person->delete();
         return redirect()->route('people')->with('success', 'Utilisateur supprimé avec succès');
     }
-
- 
-
 }

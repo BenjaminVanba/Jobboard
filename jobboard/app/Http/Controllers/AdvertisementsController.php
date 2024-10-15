@@ -55,10 +55,10 @@ class AdvertisementsController extends Controller
 
         $validatedData = $request->validate([
             'title' => 'max:255',
-            'description_courte',
-            'description_longue',
+            'description_courte' => 'nullable|string',
+            'description_longue' => 'nullable|string',
             'salary' => 'numeric',
-            'location',
+            'location' => 'string',
             'company_id' => 'exists:companies,id',
             'posted_by' => 'exists:people,id',
         ]);
@@ -84,6 +84,4 @@ class AdvertisementsController extends Controller
             'description_longue' => $advertisement->description_longue,
         ]);
     }
-
-    
 }

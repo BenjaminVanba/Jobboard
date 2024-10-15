@@ -1,13 +1,13 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\PeopleController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ApplicationsController;
 use App\Http\Controllers\AdvertisementsController;
-use Illuminate\Support\Facades\Auth;
 
 
 
@@ -37,13 +37,12 @@ Route::get('/backoffice/create', function () {
         return app(AdvertisementsController::class)->create();
     }
     return redirect('/')->withErrors('Accès refusé.');
-
 })->name('advertisement.create');
 
 // Enregistrer une nouvelle annonce
-Route::post('/backoffice', function () {
+Route::post('/backoffice', function (Request $request) {
     if (Auth::check() && Auth::user()->role === 'admin') {
-        return app(AdvertisementsController::class)->store();
+        return app(AdvertisementsController::class)->store($request);
     }
     return redirect('/')->withErrors('Accès refusé.');
 })->name('advertisement.store');
@@ -57,9 +56,9 @@ Route::get('/backoffice/{id}/edit', function ($id) {
 })->name('advertisement.edit');
 
 // Mettre à jour une annonce
-Route::put('/backoffice/{id}', function ($id) {
+Route::put('/backoffice/{id}', function (Request $request, $id) {
     if (Auth::check() && Auth::user()->role === 'admin') {
-        return app(AdvertisementsController::class)->update($id);
+        return app(AdvertisementsController::class)->update($request, $id);
     }
     return redirect('/')->withErrors('Accès refusé.');
 })->name('advertisement.update');
@@ -90,9 +89,9 @@ Route::get('/backoffice/backoffice_companies_create', function () {
 })->name('company.create');
 
 // Route pour enregistrer une nouvelle entreprise
-Route::post('/backoffice/backoffice_companies', function () {
+Route::post('/backoffice/backoffice_companies', function (Request $request) {
     if (Auth::check() && Auth::user()->role === 'admin') {
-        return app(CompanyController::class)->store();
+        return app(CompanyController::class)->store($request);
     }
     return redirect('/')->withErrors('Accès refusé.');
 })->name('company.store');
@@ -106,9 +105,9 @@ Route::get('/backoffice/backoffice_companies/{id}/edit', function ($id) {
 })->name('company.edit');
 
 // Route pour mettre à jour une entreprise
-Route::put('/backoffice/backoffice_companies/{id}', function ($id) {
+Route::put('/backoffice/backoffice_companies/{id}', function (Request $request, $id) {
     if (Auth::check() && Auth::user()->role === 'admin') {
-        return app(CompanyController::class)->update($id);
+        return app(CompanyController::class)->update($request, $id);
     }
     return redirect('/')->withErrors('Accès refusé.');
 })->name('company.update');
@@ -139,25 +138,28 @@ Route::get('/backoffice/backoffice_people_create', function () {
 })->name('people.create');
 
 // Route pour enregistrer une nouvelle personne
-Route::post('/backoffice/backoffice_people', function () {
+Route::post('/backoffice/backoffice_people', function (Request $request) {
     if (Auth::check() && Auth::user()->role === 'admin') {
-        return app(PeopleController::class)->store();
+        return app(PeopleController::class)->store($request);
     }
     return redirect('/')->withErrors('Accès refusé.');
 })->name('people.store');
+
+
 
 // Route pour éditer une personne
 Route::get('/backoffice/backoffice_people/{id}/edit', function ($id) {
     if (Auth::check() && Auth::user()->role === 'admin') {
         return app(PeopleController::class)->edit($id);
     }
+    return app(PeopleController::class)->edit($id);
     return redirect('/')->withErrors('Accès refusé.');
 })->name('people.edit');
 
 // Route pour enregistrer l'édition
-Route::put('/backoffice/backoffice_people/{id}', function ($id) {
+Route::put('/backoffice/backoffice_people/{id}', function (Request $request, $id) {
     if (Auth::check() && Auth::user()->role === 'admin') {
-        return app(PeopleController::class)->update($id);
+        return app(PeopleController::class)->update($request, $id);
     }
     return redirect('/')->withErrors('Accès refusé.');
 })->name('people.update');
@@ -188,9 +190,9 @@ Route::get('/backoffice/backoffice_application_create', function () {
 })->name("applications.create");
 
 // Route pour enregistrer une nouvelle candidature
-Route::post('/backoffice/backoffice_application', function () {
+Route::post('/backoffice/backoffice_application', function (Request $request) {
     if (Auth::check() && Auth::user()->role === 'admin') {
-        return app(ApplicationsController::class)->store();
+        return app(ApplicationsController::class)->store($request);
     }
     return redirect('/')->withErrors('Accès refusé.');
 })->name('applications.store');
@@ -204,9 +206,9 @@ Route::get('/backoffice/backoffice_application/{id}/edit', function ($id) {
 })->name('applications.edit');
 
 // Route pour enregistrer la candidature
-Route::put('/backoffice/backoffice_application/{id}', function ($id) {
+Route::put('/backoffice/backoffice_application/{id}', function (Request $request, $id) {
     if (Auth::check() && Auth::user()->role === 'admin') {
-        return app(ApplicationsController::class)->update($id);
+        return app(ApplicationsController::class)->update($request, $id);
     }
     return redirect('/')->withErrors('Accès refusé.');
 })->name('applications.update');
@@ -246,4 +248,3 @@ Route::post('/advertisement/{id}/apply', [ApplicationsController::class, 'submit
 
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
-
