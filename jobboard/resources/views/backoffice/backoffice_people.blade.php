@@ -3,7 +3,7 @@
 @section('title', 'Backoffice People')
 
 @section('content')
-<div class="container mx-auto mt-10">
+<div class="container mx-auto mt-10" style="margin-bottom: 100px;">
     <h1 class="text-3xl font-bold text-center mb-5">Gestion des Personnes</h1>
     
     <!-- Message de succès après une action (édition, suppression, etc.) -->
