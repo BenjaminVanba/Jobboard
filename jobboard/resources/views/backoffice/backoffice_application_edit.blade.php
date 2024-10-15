@@ -46,7 +46,7 @@
             <input type="number" name="advertisement_id" class="w-full border border-gray-300 rounded px-4 py-2" value="{{ $application->advertisement_id }}" required>
         </div>
 
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Soumettre</button>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-800 mb-4">Soumettre</button>
     </form>
 
     @if ($errors->any())

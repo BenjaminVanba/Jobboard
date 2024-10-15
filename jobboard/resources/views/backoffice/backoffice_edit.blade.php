@@ -33,7 +33,7 @@
             <input type="text" name="location" class="w-full border border-gray-300 rounded px-4 py-2" value="{{$advertisement->location}}" required>
         </div>
 
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Mettre à jour</button>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-800 mb-4">Mettre à jour</button>
     </form>
     @if ($errors->any())
     <div class="mb-4">

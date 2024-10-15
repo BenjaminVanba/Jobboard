@@ -31,7 +31,7 @@
             <input type="url" name="website" class="w-full border border-gray-300 rounded px-4 py-2">
         </div>
 
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Créer</button>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-800 mb-4 ">Créer</button>
     </form>
 </div>
 @endsection
