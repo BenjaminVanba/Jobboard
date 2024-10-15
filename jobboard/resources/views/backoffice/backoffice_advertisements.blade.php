@@ -20,6 +20,7 @@
                 <tr>
                     <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Titre</th>
                     <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Description</th>
+                    <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Description longue</th>
                     <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Salaire</th>
                     <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Location</th>
                     <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Actions</th>
@@ -30,6 +31,9 @@
                 <tr>
                     <td class="w-1/6 py-3 px-4">{{ $advertisement->title }}</td>
                     <td class="w-1/6 py-3 px-4">{{ $advertisement->description_courte }}</td>
+                    <td class="w-1/6 py-3 px-4">
+                        {{ \Illuminate\Support\Str::limit($advertisement->description_longue, 50) }}
+                    </td>
                     <td class="w-1/6 py-3 px-4">{{ $advertisement->salary }} €</td>
                     <td class="w-1/6 py-3 px-4">{{ $advertisement->location }}</td>
                     <td class="w-1/6 py-3 px-4">
