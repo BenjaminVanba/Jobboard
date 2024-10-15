@@ -40,13 +40,14 @@ class CompanyController extends Controller
         return view('backoffice.backoffice_companies_edit', compact('companies')); // Vue d'édition
     }
 
+
     public function update(Request $request, $id)
     {
 
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'address' => 'required',
-            'email' => 'required|email|unique:companies,email',
+            'email' => 'required|email|unique:companies,email,' . $id,
             'phone' => 'required|numeric|digits:10',
             'website' => 'required|url'
         ]);
@@ -62,6 +63,4 @@ class CompanyController extends Controller
         $companies->delete(); // Supprimer l'annonce
         return redirect()->route('companies')->with('success', 'Entreprise supprimée avec succès');
     }
- 
-
 }
