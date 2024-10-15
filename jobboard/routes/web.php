@@ -255,3 +255,8 @@ Route::post('/profile/update', [ProfileController::class, 'update'])->name('prof
 use App\Http\Controllers\ContactController;
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
+
+
+
+Route::get('/advertisement/search', [AdvertisementsController::class, 'search'])->name('advertisement.search');

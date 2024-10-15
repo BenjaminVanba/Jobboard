@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Advertisement;
 
 
+
+
 class AdvertisementsController extends Controller
 {
     // Affiche le jobboard
@@ -91,4 +93,27 @@ class AdvertisementsController extends Controller
             'description_longue' => $advertisement->description_longue,
         ]);
     }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        $location = $request->input('location');
+
+        // Query the advertisements based on the search criteria
+        $query = Advertisement::query();
+
+        if ($keyword) {
+            $query->where('title', 'like', "%{$keyword}%");
+        }
+
+        if ($location) {
+            $query->where('location', $location);
+        }
+
+        $advertisements = $query->get(); // or use paginate() for pagination
+
+        // Return the results to a view
+        return view('advertisement.jobboard', compact('advertisements'));
+    }
+
 }
