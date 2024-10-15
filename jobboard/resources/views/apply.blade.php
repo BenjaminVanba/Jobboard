@@ -1,8 +1,15 @@
 @extends('layout')
 
+
+
+
+
 @section('content')
+
 <div class="container" style="margin-bottom: 100px;">
     <h1>Postuler pour : {{ $advertisement->title }}</h1>
+
+
 
     @if (session('success'))
         <script>
