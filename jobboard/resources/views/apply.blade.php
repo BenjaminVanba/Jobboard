@@ -4,6 +4,14 @@
 <div class="container" style="margin-bottom: 100px;">
     <h1>Postuler pour : {{ $advertisement->title }}</h1>
 
+    @if (session('success'))
+        <script>
+            toastr.success("{{ session('success') }}");
+        </script>
+    @endif  <!-- Corrected this line -->
+
+    
+
     <form method="POST" action="{{ route('job.submitApplication', $advertisement->id) }}" enctype="multipart/form-data">
         @csrf
 

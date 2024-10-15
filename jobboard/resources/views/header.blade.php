@@ -21,7 +21,7 @@
                                         <li><a href="{{ route('home') }}">Accueil</a></li>
 
                                         @if(!Auth::check() || Auth::user()->role !== 'admin')
-                                            <li><a href="{{ route('jobboard') }}">Find a Jobs</a></li>
+                                            <li><a href="{{ route('jobboard') }}">Trouver un emploi</a></li>
                                             <li><a href="{{ route('contact') }}">Contact</a></li>
                                         @endif
 

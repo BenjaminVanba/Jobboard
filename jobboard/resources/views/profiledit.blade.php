@@ -96,7 +96,7 @@
         </div>
 
         <div class="form-group mb-3">
-            <label for="password" class="form-label">Nouveau Mot de Passe (facultatif)</label>
+            <label for="password" class="form-label">Nouveau Mot de Passe</label>
             <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Entrez un nouveau mot de passe">
             @error('password')
                 <span class="invalid-feedback">{{ $message }}</span>

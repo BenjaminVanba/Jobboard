@@ -152,6 +152,8 @@ class ApplicationsController extends Controller
         // Enregistrement de la candidature
         $application->save();
 
+
+
         // Redirection après soumission
         return redirect()->route('home')->with('success', 'Votre candidature a été soumise avec succès.');
     }
