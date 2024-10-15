@@ -113,7 +113,7 @@ class AdvertisementsController extends Controller
         $advertisements = $query->get(); // or use paginate() for pagination
 
         // Return the results to a view
-        return view('advertisement.jobboard', compact('advertisements'));
+        return view('jobboard', compact('advertisements'));
     }
 
 }
