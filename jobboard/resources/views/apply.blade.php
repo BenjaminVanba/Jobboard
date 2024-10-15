@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-<div class="container">
+<div class="container" style="margin-bottom: 100px;">
     <h1>Postuler pour : {{ $advertisement->title }}</h1>
 
     <form method="POST" action="{{ route('job.submitApplication', $advertisement->id) }}" enctype="multipart/form-data">
