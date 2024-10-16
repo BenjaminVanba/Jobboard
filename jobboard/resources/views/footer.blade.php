@@ -6,12 +6,13 @@
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                    <div class="single-footer-caption mb-50">
                      <div class="single-footer-caption mb-30">
-                         <div class="footer-tittle">
-                             <h4>About Us</h4>
-                             <div class="footer-pera">
-                                 <p>Our mission is to provide a platform where talent can connect with companies looking for qualified candidates. We aim to create a work environment where every individual can find a job that aligns with their skills and aspirations. Our values are commitment, transparency, diversity, and inclusion.</p>
+                        <div class="footer-tittle">
+                            <h4>À propos de nous</h4>
+                            <div class="footer-pera">
+                                <p>Notre mission est de fournir une plateforme où les talents peuvent se connecter avec des entreprises à la recherche de candidats qualifiés. Nous visons à créer un environnement de travail où chaque individu peut trouver un emploi qui correspond à ses compétences et aspirations. Nos valeurs sont l'engagement, la transparence, la diversité et l'inclusion.</p>
                             </div>
-                         </div>
+                        </div>
+                        
                      </div>
 
                    </div>
@@ -19,14 +20,15 @@
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
                     <div class="single-footer-caption mb-50">
                         <div class="footer-tittle">
-                            <h4>Contact Info</h4>
+                            <h4>Informations de contact</h4>
                             <ul>
                                 <li>
-                                <p>Address :Your address goes
-                                    here, your demo address.</p>
+                                    <p><h3>Monaco, France.</h3>
+                                        <p>Rosemead, CA 91770</p>
+                                    </p>
                                 </li>
-                                <li><a href="#">Phone : +8880 44338899</a></li>
-                                <li><a href="#">Email : info@colorlib.com</a></li>
+                                <li><a href="#">Téléphone : +33 25 35 65 23</a></li>
+                                <li><a href="#">Email : jobboard@job.com</a></li>
                             </ul>
                         </div>
 
@@ -38,24 +40,11 @@
                         <div class="footer-tittle">
                             <h4>Newsletter</h4>
                             <div class="footer-pera footer-pera2">
-                             <p>Subscribe to our newsletter to receive updates on new job openings.</p>
-                         </div>
-                         <!-- Form -->
-                         <div class="footer-form" >
-                             <div id="mc_embed_signup">
-                                 <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                 method="get" class="subscribe_form relative mail_part">
-                                     <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
-                                     class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
-                                     onblur="this.placeholder = ' Email Address '">
-                                     <div class="form-icon">
-                                         <button type="submit" name="submit" id="newsletter-submit"
-                                         class="email_icon newsletter-submit button-contactForm"><img src="assets/img/icon/form.png" alt=""></button>
-                                     </div>
-                                     <div class="mt-10 info"></div>
-                                 </form>
-                             </div>
-                         </div>
+                                <p>Abonnez-vous à notre newsletter pour recevoir des mises à jour sur les nouvelles offres d'emploi.</p>
+                            </div>
+                        </div>
+                        
+                       
                         </div>
                     </div>
                 </div>
@@ -64,6 +53,9 @@
           
         </div>
     </div>
+
+
+
     <!-- footer-bottom area -->
     <div class="footer-bottom-area footer-bg">
         <div class="container">
@@ -86,6 +78,10 @@
             </div>
         </div>
     </div>
+
+
+
+
     <!-- Footer End-->
     <script src="{{ asset('assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>
 <script src="{{ asset('assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
