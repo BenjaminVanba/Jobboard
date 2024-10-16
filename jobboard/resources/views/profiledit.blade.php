@@ -1,5 +1,3 @@
-<!-- resources/views/layout.blade.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,12 +41,13 @@
    
 </head>
 
+
 <body>
   
-  <header>
-    @include('header') <!-- En-tête -->
-    </header>
-    
+    <header>
+      @include('header') <!-- En-tête -->
+      </header>
+
 
 <div class="container mt-5">
     <h1 class="text-center mb-4">Modifier mon compte</h1>
@@ -133,11 +132,15 @@
     }
 </style>
 
-<footer>
-    @include('footer') <!-- En-tête -->
-    </footer>
 
-    @vite('resources/js/app.js') 
+
+
+
+<!-- ================ contact section end ================= -->
+
+@include('footer')
+
+
 </body>
 
 </html>
