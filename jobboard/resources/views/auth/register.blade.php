@@ -97,7 +97,7 @@
               </div>
 
               <!-- Submit button -->
-              <button type="submit" class="btn btn-primary btn-block mb-4" style="height: 38px; width: 100%;">
+              <button type="submit" class="btn btn-primary btn-block mb-4" style="height: 38px; width: 100%;margin-top:2">
                 {{ __('S\'inscrire') }}
               </button>
 

@@ -255,6 +255,7 @@ Route::post('/profile/update', [ProfileController::class, 'update'])->name('prof
 use App\Http\Controllers\ContactController;
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
 
 
 
