@@ -6,9 +6,9 @@
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-2" style="right:100px;">
                         <!-- Logo -->
-                        <div class="logo">
+                        <div class="logo mt-6 w-40 h-full mx-[80px]">
                             <a href="{{ route('home') }}">
-                                <img src="{{ asset('images/logo.png') }}" alt="logo" style="float: left; width: 150px; height: auto; margin:10px; margin-top:10px;">
+                                <img src="{{ asset('images/logo.png') }}" alt="logo" >
                             </a>
                          </div>
                     </div>

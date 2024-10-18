@@ -1,5 +1,8 @@
+@section('title', 'Contact')
+
 <!DOCTYPE html>
 <html lang="en">
+@section('title', 'Créer une Candidature')
 
 <head>
 
