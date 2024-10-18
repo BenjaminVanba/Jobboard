@@ -34,20 +34,20 @@
             <input type="password" name="mot_de_passe" class="w-full border border-gray-300 rounded px-4 py-2" required>
         </div>
 
-        <div class="mb-4">
+        <div class="mb-4 flex flex-col">
             <label class="block text-gray-700">Rôle</label>
             <select name="role" class="w-full border border-gray-300 rounded px-4 py-2" required>
                 <option value="applicant">Candidat</option>
                 <option value="Manager">Manager</option>
             </select>
+            <div class="mb-4 mt-4">
+                <label class="block text-gray-700">ID de l'Entreprise</label>
+                <input type="number" name="company_id" class="w-full border border-gray-300 rounded px-4 py-2">
+            </div>
         </div>
 
-        <div class="mb-4">
-            <label class="block text-gray-700">ID de l'Entreprise</label>
-            <input type="number" name="company_id" class="w-full border border-gray-300 rounded px-4 py-2">
-        </div>
 
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Créer</button>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded mb-4">Créer</button>
     </form>
     
     @if ($errors->any())

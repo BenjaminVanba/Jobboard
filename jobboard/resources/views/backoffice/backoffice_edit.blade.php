@@ -38,7 +38,7 @@
             <input type="number" name="company_id" value="{{ $advertisement->company_id }}" class="w-full border border-gray-300 rounded px-4 py-2" required>
         </div>
 
-        <div class="mb-4">
+        <div class="mb-4 flex flex-col">
             <label class="block text-gray-700">Posté par</label>
             <select name="posted_by" class="w-full border border-gray-300 rounded px-4 py-2" required>
                 <option value="" disabled>Choisissez un manager</option>
@@ -49,12 +49,11 @@
                     </option>
                 @endforeach
             </select>
+            <div class="mt-4">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-800">Mettre à jour</button>
+            </div>
         </div>
 
-        <!-- Bouton de soumission pour l'édition -->
-        <div class="mt-4">
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-800">Mettre à jour</button>
-        </div>
         
     </form>
 </div>
