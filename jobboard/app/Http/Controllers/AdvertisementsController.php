@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Person;
 use Illuminate\Http\Request;
 use App\Models\Advertisement;
 
@@ -23,13 +24,15 @@ class AdvertisementsController extends Controller
     // Récupere toutes les annonces
     public function backoffice()
     {
-        $advertisements = Advertisement::all();
+        $advertisements = Advertisement::with('postedBy')->get();
         return view('backoffice.backoffice_advertisements', compact('advertisements')); // Vue du backoffice
     }
 
     public function create()
     {
-        return view('backoffice.backoffice_create'); // Vue du formulaire de création
+        $managers = Person::where('role', 'manager')->get();
+
+        return view('backoffice.backoffice_create', compact('managers'));
     }
 
     public function store(Request $request)
@@ -48,12 +51,15 @@ class AdvertisementsController extends Controller
         return redirect()->route('backoffice_annonces')->with('success', 'Annonce créée avec succès');
     }
 
-    // Viens récupérer les différents ID de chaque annonce
     public function edit($id)
     {
+        $managers = Person::where('role', 'manager')->get();
+
         $advertisement = Advertisement::findOrFail($id);
-        return view('backoffice.backoffice_edit', compact('advertisement'));
+
+        return view('backoffice.backoffice_edit', compact('managers', 'advertisement'));
     }
+
 
 
     // Mettre à jour l'annonce
@@ -115,5 +121,4 @@ class AdvertisementsController extends Controller
         // Return the results to a view
         return view('jobboard', compact('advertisements'));
     }
-
 }

@@ -18,6 +18,8 @@
         <table class="min-w-full bg-white">
             <thead class="bg-gray-800 text-white">
                 <tr>
+                    <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Posté par</th>
+                    <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Entreprise</th>
                     <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Titre</th>
                     <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Description</th>
                     <th class="w-1/6 py-3 px-4 uppercase font-semibold text-sm">Description longue</th>
@@ -29,6 +31,7 @@
             <tbody class="text-gray-700">
                 @foreach($advertisements as $advertisement)
                 <tr>
+                    <td class="w-1/6 py-3 px-4">{{ $advertisement->postedBy ? $advertisement->postedBy->first_name . ' ' . $advertisement->postedBy->last_name : 'Inconnu' }}</td>
                     <td class="w-1/6 py-3 px-4">{{ $advertisement->title }}</td>
                     <td class="w-1/6 py-3 px-4">{{ $advertisement->description_courte }}</td>
                     <td class="w-1/6 py-3 px-4">
@@ -56,7 +59,7 @@
     
     <!-- Lien pour créer une nouvelle annonce -->
     <div class="mt-4">
-        <a href="{{ route('advertisement.create') }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">Ajouter une nouvelle annonce</a>
+        <a href="{{ route('advertisement.create') }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition ">Ajouter une nouvelle annonce</a>
     </div>
 </div>
 @endsection

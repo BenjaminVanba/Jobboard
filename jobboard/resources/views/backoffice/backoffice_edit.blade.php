@@ -1,16 +1,16 @@
 @extends('layout')
-
+@section('title', 'Éditer l\'annonce')
 @section('content')
 <div class="container mx-auto mt-10">
-    <h1 class="text-3xl font-bold mb-5">Modifier l'annonce</h1>
-
+    <h1 class="text-3xl font-bold mb-5">Éditer l'annonce</h1>
+    
     <form action="{{ route('advertisement.update', $advertisement->id) }}" method="POST">
         @csrf
         @method('PUT')
 
         <div class="mb-4">
             <label class="block text-gray-700">Titre</label>
-            <input type="text" name="title" class="w-full border border-gray-300 rounded px-4 py-2" value="{{ $advertisement->title }}" required>
+            <input type="text" name="title" value="{{ $advertisement->title }}" class="w-full border border-gray-300 rounded px-4 py-2" required>
         </div>
 
         <div class="mb-4">
@@ -25,25 +25,37 @@
 
         <div class="mb-4">
             <label class="block text-gray-700">Salaire</label>
-            <input type="number" name="salary" class="w-full border border-gray-300 rounded px-4 py-2" value="{{ $advertisement->salary }}" required>
+            <input type="number" name="salary" value="{{ $advertisement->salary }}" class="w-full border border-gray-300 rounded px-4 py-2" required>
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Lieu</label>
-            <input type="text" name="location" class="w-full border border-gray-300 rounded px-4 py-2" value="{{$advertisement->location}}" required>
+            <input type="text" name="location" value="{{ $advertisement->location }}" class="w-full border border-gray-300 rounded px-4 py-2" required>
         </div>
 
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-800 mb-4">Mettre à jour</button>
-    </form>
-    @if ($errors->any())
-    <div class="mb-4">
-        <ul class="text-red-500">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+        <div class="mb-4">
+            <label class="block text-gray-700">Entreprise ID</label>
+            <input type="number" name="company_id" value="{{ $advertisement->company_id }}" class="w-full border border-gray-300 rounded px-4 py-2" required>
+        </div>
 
+        <div class="mb-4">
+            <label class="block text-gray-700">Posté par</label>
+            <select name="posted_by" class="w-full border border-gray-300 rounded px-4 py-2" required>
+                <option value="" disabled>Choisissez un manager</option>
+                @foreach($managers as $manager)
+                    <option value="{{ $manager->id }}" 
+                        {{ $manager->id == $advertisement->posted_by ? 'selected' : '' }}>
+                        {{ $manager->first_name }} {{ $manager->last_name }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+
+        <!-- Bouton de soumission pour l'édition -->
+        <div class="mt-4">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-800">Mettre à jour</button>
+        </div>
+        
+    </form>
 </div>
 @endsection

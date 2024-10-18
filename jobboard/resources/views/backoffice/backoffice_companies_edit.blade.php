@@ -1,5 +1,5 @@
 @extends('layout')
-
+@section('title', 'Modifier une entreprise')
 @section('content')
 <div class="container mx-auto mt-10">
     <h1 class="text-3xl font-bold mb-5">Modifier l'entreprise</h1>
